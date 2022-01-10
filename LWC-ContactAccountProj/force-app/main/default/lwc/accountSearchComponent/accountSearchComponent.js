@@ -130,9 +130,9 @@ export default class AccountSearchComponent extends LightningElement {
         this.dispatchEvent(selectedEvent);
     }
 
-    handleLookup(event){
-        console.log( JSON.stringify ( event.detail) )
-    }
+    // handleLookup(event){
+    //     console.log( JSON.stringify ( event.detail) )
+    // }
 
     handleClose(){
         this.selectedRecord = undefined;
