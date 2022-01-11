@@ -22,7 +22,7 @@ export default class ContactSearchComponent extends LightningElement {
     delayTimeout;
 
     searchRecords;
-    selectedRecord;
+    @api selectedRecord;
     objectLabel;
     isLoading = false;
 
@@ -128,9 +128,9 @@ export default class ContactSearchComponent extends LightningElement {
         this.dispatchEvent(selectedEvent);
     }
 
-    handleLookup(event){
-        console.log( JSON.stringify ( event.detail) )
-    }
+    // handleLookup(event){
+    //     console.log( JSON.stringify ( event.detail) )
+    // }
 
     handleClose(){
         this.selectedRecord = undefined;
