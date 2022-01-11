@@ -146,6 +146,7 @@ export default class ContactSearchComponent extends LightningElement {
             }
         });
         this.dispatchEvent(selectedEvent);
+        
     }
 
     titleCase(string) {
