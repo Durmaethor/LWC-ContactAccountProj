@@ -1,5 +1,5 @@
 import { LightningElement, api, track, wire } from 'lwc';
-import search from '@salesforce/apex/SearchController.search';
+import search from '@salesforce/apex/SearchController.aSearch';
 const DELAY = 300;
 
 export default class AccountSearchComponent extends LightningElement {
@@ -15,6 +15,7 @@ export default class AccountSearchComponent extends LightningElement {
     @api createRecord;
     @api fields = ['Name'];
     @api displayFields = 'Name, Email__c, Phone';
+    @api conId;
 
     @track error;
 
@@ -77,7 +78,8 @@ export default class AccountSearchComponent extends LightningElement {
                 search({ 
                     objectName : this.objName,
                     fields     : this.fields,
-                    searchTerm : searchKey 
+                    searchTerm : searchKey, 
+                    conId      : this.conId
                 })
                 .then(result => {
                     let stringResult = JSON.stringify(result);
@@ -92,12 +94,13 @@ export default class AccountSearchComponent extends LightningElement {
                         }
                     });
                     this.searchRecords = allResult;
-                    console.log("printing here");
-                    console.log(this.searchRecords);
+                    // console.log("printing here");
+                    // console.log(this.searchRecords);
                     
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    console.log( JSON.stringify(error));
                 })
                 .finally( ()=>{
                     //this.isLoading = false;
